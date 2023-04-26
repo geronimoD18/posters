@@ -14,7 +14,7 @@
                         <a class="nav-link" href="#">About me</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+                        <a class="nav-link" href="../posters/show_posts.php">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Github</a>
