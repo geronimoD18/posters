@@ -10,12 +10,12 @@
   <!-- Importando la versión actual de Font Awesome a la fecha -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Mis fuentes de Google Fonts para el proyecto -->
-  
+  <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
   <?php include 'template/header.php' ?>
 
-  <main>
+  <div class="container main">
     <form action="functions/submit_post.php" method="post">
         <label for="title">Título:</label><br>
         <input type="text" id="title" name="title"><br>
@@ -28,7 +28,7 @@
 
         <input type="submit" value="Publicar">
     </form>
-  </main>
+  </div class="container">
 
   <?php include 'template/footer.php' ?>
 </body>
