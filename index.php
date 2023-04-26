@@ -13,11 +13,7 @@
   
 </head>
 <body>
-  <header>
-    <nav>
-      <!-- Aquí va el menú de navegación -->
-    </nav>
-  </header>
+  <?php include 'template/header.php' ?>
 
   <main>
     <form action="functions/submit_post.php" method="post">
@@ -34,8 +30,6 @@
     </form>
   </main>
 
-  <footer>
-    <!-- Aquí va el contenido del pie de página -->
-  </footer>
+  <?php include 'template/footer.php' ?>
 </body>
 </html>
