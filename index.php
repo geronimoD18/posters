@@ -50,8 +50,8 @@
 <!-- Print bloggos start -->
 
     <div class="blogs">
-      <u><h3>Entradas recientes</h3></u>
-      <?php
+        <u><h3>Entradas recientes</h3></u>
+        <?php
         // Conexión a la base de datos
         include 'functions/db.php';
 
@@ -62,13 +62,14 @@
         // Muestra los posts
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                echo '
-                    <div>
-                        <h4>'. $row["title"] .'</h4>
-                        <span class="text-muted">Publicado por <strong><em>'. $row["author"] .'</em></strong> el <strong><em>'. date('d \d\e F, Y', strtotime($row["date"])) .'</em></strong></span><br>
-                        <p>'. $row["content"] .'</p>
-                        <center><span>...</span></center>
-                    </div>';
+        ?>
+                <div>
+                    <h4><?php echo $row["title"]; ?></h4>
+                    <span class="text-muted">Publicado por <strong><em><?php echo $row["author"]; ?></em></strong> el <strong><em><?php echo date('d \d\e F, Y', strtotime($row["date"])); ?></em></strong></span><br>
+                    <p><?php echo substr($row["content"], 0, 100) . '...'; ?></p>
+                    <center><a href="functions/post_details.php?id=<?php echo $row['id']; ?>">Ver más</a></center>
+                </div>
+        <?php
             }
         } else {
             echo '
@@ -79,27 +80,14 @@
 
         // Cierra la conexión a la base de datos
         $c->close();
-      ?>
+        ?>
     </div>
+
 <!-- Print bloggos end -->
 
   </div class="container">
 
   <?php include 'template/footer.php' ?>
 
-  <script>
-    const toggle = document.getElementById('blogToggle');
-    const form = document.getElementById('formDiv');
-
-    toggle.addEventListener('change', function() {
-      if(this.checked) {
-        form.style.height = 'auto';
-        form.style.overflow = 'hidden';
-      } else {
-        form.style.height = '0';
-        form.style.overflow = 'none';
-      }
-    });
-  </script>
 </body>
 </html>

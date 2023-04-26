@@ -10,15 +10,40 @@
   <!-- Importando la versión actual de Font Awesome a la fecha -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Mis fuentes de Google Fonts para el proyecto -->
-  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
-  <?php include 'template/header.php' ?>
+  <?php include '../template/header.php' ?>
 
-  <main>
-    <!-- Aquí va el contenido principal de la página -->
-  </main>
+  <div class="container main">
+    <?php
+    // Conexión a la base de datos
+    include 'db.php';
 
-  <?php include 'template/footer.php' ?>
+    $id = $_GET['id'];
+
+    // Consulta SQL para obtener todos los posts
+    $sql = "SELECT * FROM posts WHERE id = '$id' ORDER BY date DESC";
+    $result = $c->query($sql);
+
+    // Muestra los posts
+    if($result->num_rows > 0){
+        while($row = $result->fetch_assoc()) {
+    ?>
+            <div>
+                <h4><?php echo $row["title"]; ?></h4>
+                <span class="text-muted">Publicado por <strong><em><?php echo $row["author"]; ?></em></strong> el <strong><em><?php echo date('d \d\e F, Y', strtotime($row["date"])); ?></em></strong></span><br><br>
+                <p><?php echo ($row["content"]); ?></p>
+            </div>
+    <?php
+        }
+    }
+
+    // Cierra la conexión a la base de datos
+    $c->close();
+    ?>
+  </div>
+
+  <?php include '../template/footer.php' ?>
 </body>
 </html>
