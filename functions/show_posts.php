@@ -20,7 +20,7 @@ if ($result->num_rows > 0) {
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><? echo $row["title"] ?> - Dev Rat Posts</title>
+    <title>Posts - Dev Rat Posts</title>
     <!-- Importando la versión actual de Bootstrap a la fecha -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -40,6 +40,7 @@ if ($result->num_rows > 0) {
         <h2>'. $row["title"] .'</h2>
         <p>'. $row["content"] .'</p>
         <span class="text-muted">Publicado por <strong><em>'. $row["author"] .'</en></strong> el <strong><em>'. date('d \d\e F, Y', strtotime($row["date"])) .'</en></strong></span>
+        <hr><br>
     </main>
 
     <footer>
