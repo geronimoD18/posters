@@ -17,7 +17,7 @@ $sql = "INSERT INTO posts (title, content, author) VALUES ('$title', '$content',
 
 // Ejecuta la consulta SQL
 if ($c->query($sql) === TRUE) {
-  header('Location: ../show_posts.php');
+  header('Location: ./');
 } else {
   echo "Error al publicar el post: " . $c->error;
 }

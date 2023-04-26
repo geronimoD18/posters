@@ -16,20 +16,90 @@
   <?php include 'template/header.php' ?>
 
   <div class="container main">
-    <form action="functions/submit_post.php" method="post">
-        <label for="title">Título:</label><br>
-        <input type="text" id="title" name="title"><br>
 
-        <label for="content">Contenido:</label><br>
-        <textarea id="content" name="content"></textarea><br>
+<!-- Create bloggo start -->
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Nueva entrada</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="functions/submit_post.php" method="post">
+          <label for="title">Título:</label><br>
+          <input type="text" id="title" name="title"><br>
 
-        <label for="author">Autor:</label><br>
-        <input type="text" id="author" name="author"><br>
+          <label for="content">Contenido:</label><br>
+          <textarea id="content" name="content"></textarea><br>
 
-        <input type="submit" value="Publicar">
-    </form>
+          <label for="author">Autor:</label><br>
+          <input type="text" id="author" name="author"><br>
+      </div>
+      <div class="modal-footer">
+          <input type="submit" value="Guardar entrada">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Crear nuevo blog</button>
+<!-- Create bloggo end -->
+<hr>
+<!-- Print bloggos start -->
+
+    <div class="blogs">
+      <u><h3>Entradas recientes</h3></u>
+      <?php
+        // Conexión a la base de datos
+        include 'functions/db.php';
+
+        // Consulta SQL para obtener todos los posts
+        $sql = "SELECT * FROM posts ORDER BY date DESC";
+        $result = $c->query($sql);
+
+        // Muestra los posts
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo '
+                    <div>
+                        <h4>'. $row["title"] .'</h4>
+                        <span class="text-muted">Publicado por <strong><em>'. $row["author"] .'</en></strong> el <strong><em>'. date('d \d\e F, Y', strtotime($row["date"])) .'</en></strong></span><br>
+                        <p>'. $row["content"] .'</p>
+                        <center><span>...</span></center>
+                    </div><br>';
+            }
+        } else {
+            echo '
+                <div>
+                    <span class="text-muted"><strong>No hay publicaciones</strong></span>
+                </div>';
+        }
+
+        // Cierra la conexión a la base de datos
+        $c->close();
+      ?>
+    </div>
+<!-- Print bloggos end -->
+
   </div class="container">
 
   <?php include 'template/footer.php' ?>
+
+  <script>
+    const toggle = document.getElementById('blogToggle');
+    const form = document.getElementById('formDiv');
+
+    toggle.addEventListener('change', function() {
+      if(this.checked) {
+        form.style.height = 'auto';
+        form.style.overflow = 'hidden';
+      } else {
+        form.style.height = '0';
+        form.style.overflow = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
