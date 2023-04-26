@@ -2,11 +2,6 @@
 // Conexión a la base de datos
 include 'db.php';
 
-// Verifica la conexión
-if ($c->connect_error) {
-  die("Error al conectar a la base de datos: " . $c->connect_error);
-}
-
 // Consulta SQL para obtener todos los posts
 $sql = "SELECT * FROM posts ORDER BY date DESC";
 $result = $c->query($sql);

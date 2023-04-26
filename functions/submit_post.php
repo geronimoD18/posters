@@ -2,11 +2,6 @@
 // Conexión a la base de datos
 include 'db.php';
 
-// Verifica la conexión
-if ($c->connect_error) {
-  die("Error al conectar a la base de datos: " . $c->connect_error);
-}
-
 // Obtiene los datos del formulario
 $title = $_POST["title"];
 $content = $_POST["content"];
