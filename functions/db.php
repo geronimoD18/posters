@@ -3,11 +3,11 @@
     $c = new mysqli('localhost', 'root', '', 'ab_db');
 
     // Validar conexion con la BD
-    if ($c) {
-        echo "Conexion establecida";
-    } else {
-        echo "Error en la conexion";
-    }
+    // if ($c) {
+    //     echo "Conexion establecida";
+    // } else {
+    //     echo "Error en la conexion";
+    // }
     
 
 ?>

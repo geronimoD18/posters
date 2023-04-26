@@ -20,7 +20,18 @@
   </header>
 
   <main>
-    <!-- Aquí va el contenido principal de la página -->
+    <form action="functions/submit_post.php" method="post">
+        <label for="title">Título:</label><br>
+        <input type="text" id="title" name="title"><br>
+
+        <label for="content">Contenido:</label><br>
+        <textarea id="content" name="content"></textarea><br>
+
+        <label for="author">Autor:</label><br>
+        <input type="text" id="author" name="author"><br>
+
+        <input type="submit" value="Publicar">
+    </form>
   </main>
 
   <footer>
